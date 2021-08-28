@@ -10,6 +10,7 @@ import AppLoading from "expo-app-loading";
 import { LogIn } from "./src/screens/LogIn";
 import { Home } from "./src/screens/Home";
 import { Routes } from "./src/routes";
+import { ContextProvider } from "./src/context";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,7 +19,11 @@ export default function App() {
   });
 
   if (!fontsLoaded) return <AppLoading />;
-  return <Routes />;
+  return (
+    <ContextProvider>
+      <Routes />
+    </ContextProvider>
+  );
 }
 
 const styles = StyleSheet.create({

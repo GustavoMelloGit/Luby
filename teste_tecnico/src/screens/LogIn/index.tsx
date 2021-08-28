@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { useContext } from "react";
 import { Alert, View } from "react-native";
 import { Background } from "../../components/Background/Index";
 import { styles } from "./styles";
@@ -7,15 +7,22 @@ import { theme } from "../../global/styles/theme";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { useState } from "react";
+import { api } from "../../services/api";
+import { context } from "../../context";
 
 export function LogIn() {
+  const user = useContext(context);
   const [username, setUsername] = useState("");
 
-  function handleLogin() {
-    {
-      username ? console.log(username) : Alert.alert("Campo obrigatório");
+  async function getUserData() {
+    try {
+      const response = await api.get(`/${username}`);
+      user.setUserData(response.data);
+    } catch (error) {
+      console.log("errou");
     }
   }
+
   return (
     <Background>
       <View style={styles.container}>
@@ -25,7 +32,7 @@ export function LogIn() {
           defaultValue={username}
           onChangeText={(text) => setUsername(text)}
         />
-        <Button text="ENTRAR" onPress={handleLogin} />
+        <Button text="ENTRAR" onPress={getUserData} />
       </View>
     </Background>
   );

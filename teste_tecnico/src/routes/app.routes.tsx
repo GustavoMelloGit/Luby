@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer, useIsFocused } from "@react-navigation/native";
 import { View } from "react-native";
 import { Text } from "react-native-svg";
 import { Home } from "../screens/Home";
