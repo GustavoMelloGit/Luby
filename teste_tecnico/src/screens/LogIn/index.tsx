@@ -1,14 +1,20 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Background } from "../../components/Background/Index";
 import { styles } from "./styles";
-import Github from "../../../assets/github.svg";
+import { AntDesign } from "@expo/vector-icons";
+import { theme } from "../../global/styles/theme";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
 
 export function LogIn() {
+  function handleLogin() {}
   return (
     <Background>
       <View style={styles.container}>
-        <Text>Testando</Text>
+        <AntDesign name="github" color={theme.colors.secondary} size={100} />
+        <Input placeholder="Usuário" />
+        <Button text="ENTRAR" />
       </View>
     </Background>
   );
