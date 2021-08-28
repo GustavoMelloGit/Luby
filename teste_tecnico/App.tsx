@@ -11,6 +11,7 @@ import { LogIn } from "./src/screens/LogIn";
 import { Home } from "./src/screens/Home";
 import { Routes } from "./src/routes";
 import { ContextProvider } from "./src/context";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,9 +21,11 @@ export default function App() {
 
   if (!fontsLoaded) return <AppLoading />;
   return (
-    <ContextProvider>
-      <Routes />
-    </ContextProvider>
+    <NavigationContainer>
+      <ContextProvider>
+        <Routes />
+      </ContextProvider>
+    </NavigationContainer>
   );
 }
 
