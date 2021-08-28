@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Alert, View } from "react-native";
+import { View } from "react-native";
 import { Background } from "../../components/Background/Index";
 import { styles } from "./styles";
 import { AntDesign } from "@expo/vector-icons";

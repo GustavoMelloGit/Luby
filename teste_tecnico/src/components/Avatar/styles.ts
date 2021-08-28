@@ -10,8 +10,4 @@ export const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 115/2,
     },
-    avatar:{
-        width: 110,
-        height: 110,
-    }
 });

@@ -1,18 +1,17 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, ImageProps, View } from "react-native";
 import { styles } from "./styles";
+import { context } from "../../context";
+import { useContext } from "react";
 
-type Props = {
-  url: string;
-};
+type Props = ImageProps;
 
-export function Avatar({ url }: Props) {
+export function Avatar({ ...rest }: Props) {
+  const user = useContext(context);
+  console.log(user.userData.avatar_url);
   return (
     <View style={styles.container}>
-      <Image
-        source={require("../../../assets/profile-pic.png")}
-        style={styles.avatar}
-      />
+      <Image {...rest} />
     </View>
   );
 }

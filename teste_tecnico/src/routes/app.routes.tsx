@@ -5,6 +5,7 @@ import { View } from "react-native";
 import { Text } from "react-native-svg";
 import { Home } from "../screens/Home";
 import { Feather } from "@expo/vector-icons";
+import { NavigationContainer } from "@react-navigation/native";
 
 const { Navigator, Screen } = createStackNavigator();
 const Tab = createBottomTabNavigator();

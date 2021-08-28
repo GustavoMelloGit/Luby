@@ -7,7 +7,7 @@ type User = {
   location: string;
   company: string;
   bio: string;
-  avatar: string;
+  avatar_url: string;
   followers_url: string;
   following_url: string;
   organizations_url: string;
@@ -35,7 +35,7 @@ const DEFAULT_VALUE = {
     location: "",
     company: "",
     bio: "",
-    avatar: "",
+    avatar_url: "",
     followers_url: "",
     following_url: "",
     organizations_url: "",
@@ -52,7 +52,6 @@ export const context = createContext<PropsUserContext>(DEFAULT_VALUE);
 
 export const ContextProvider = ({ children }: ContextProviderProps) => {
   const [userData, setUserData] = useState(DEFAULT_VALUE.userData);
-
   return (
     <context.Provider value={{ userData, setUserData }}>
       {children}
