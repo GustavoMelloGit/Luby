@@ -8,7 +8,6 @@ type Props = ImageProps;
 
 export function Avatar({ ...rest }: Props) {
   const user = useContext(context);
-  console.log(user.userData.avatar_url);
   return (
     <View style={styles.container}>
       <Image {...rest} />

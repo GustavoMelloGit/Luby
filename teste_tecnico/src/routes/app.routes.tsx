@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View } from "react-native";
-import { Text } from "react-native-svg";
-import { Home } from "../screens/Home";
-import { Feather } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
+import { View, Text, TouchableOpacity } from "react-native";
+import { AntDesign, Feather } from "@expo/vector-icons";
 import { theme } from "../global/styles/theme";
+import { Repos } from "../screens/Repos";
+import { Home } from "../screens/Home";
+import { context } from "../context";
 
 const { Navigator, Screen } = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,10 +20,10 @@ function SettingsScreen() {
 }
 
 export function AppRoutes() {
+  const user = useContext(context);
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
         tabBarStyle: {
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
@@ -39,15 +39,34 @@ export function AppRoutes() {
           tabBarIcon: ({ color }) => (
             <Feather name="home" size={24} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
         name="Repos"
-        component={SettingsScreen}
+        component={Repos}
         options={{
           tabBarIcon: ({ color }) => (
             <Feather name="github" size={24} color={color} />
           ),
+          headerStyle: {
+            backgroundColor: theme.colors.navbar,
+          },
+          headerTitleStyle: {
+            color: "#fff",
+            fontSize: 17,
+            fontFamily: theme.fonts.title700,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity>
+              <AntDesign name="arrowleft" size={24} color="#fff" />
+            </TouchableOpacity>
+          ),
+          headerLeftContainerStyle: {
+            marginLeft: 17,
+          },
+          headerTitle: `${user.userData.public_repos} repositórios`,
         }}
       />
       <Tab.Screen

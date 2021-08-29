@@ -10,7 +10,7 @@ import { context, DEFAULT_VALUE } from "../../context";
 export function Home() {
   const user = useContext(context);
 
-  function handleLogOut() {
+  async function handleLogOut() {
     user.setUserData(DEFAULT_VALUE.userData);
   }
   return (

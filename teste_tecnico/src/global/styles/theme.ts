@@ -8,6 +8,8 @@ export const theme ={
         lightGrey: '#5252525D',
         title: '#fff',
         inactiveColor: '#A5A5A5',
+        lock: '#CC042A',
+        unlock: '#63BF1F',
     },
     fonts: {
         title700: 'Roboto_700Bold',
