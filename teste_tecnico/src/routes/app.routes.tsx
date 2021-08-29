@@ -7,6 +7,7 @@ import { theme } from "../global/styles/theme";
 import { Repos } from "../screens/Repos";
 import { Home } from "../screens/Home";
 import { context } from "../context";
+import { FollowersScreen } from "../screens/FollowersScreen";
 
 const { Navigator, Screen } = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -71,11 +72,29 @@ export function AppRoutes() {
       />
       <Tab.Screen
         name="Seguidores"
-        component={SettingsScreen}
+        component={FollowersScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <Feather name="users" size={24} color={color} />
           ),
+          headerStyle: {
+            backgroundColor: theme.colors.navbar,
+          },
+          headerTitleStyle: {
+            color: "#fff",
+            fontSize: 17,
+            fontFamily: theme.fonts.title700,
+          },
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity>
+              <AntDesign name="arrowleft" size={24} color="#fff" />
+            </TouchableOpacity>
+          ),
+          headerLeftContainerStyle: {
+            marginLeft: 17,
+          },
+          headerTitle: `${user.userData.followers} seguidores`,
         }}
       />
       <Tab.Screen

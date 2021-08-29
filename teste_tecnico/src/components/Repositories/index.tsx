@@ -2,7 +2,6 @@ import React from "react";
 import { styles } from "./styles";
 import { View, Text } from "react-native";
 import { ContentArea } from "../ContentArea";
-import { api } from "../../services/api";
 import { Feather } from "@expo/vector-icons";
 import { theme } from "../../global/styles/theme";
 

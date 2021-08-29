@@ -31,6 +31,10 @@ export function Home() {
               uri: `${user.userData.avatar_url}`,
             }}
             style={{ width: 110, height: 110, borderRadius: 110 / 2 }}
+            container={{
+              containerHeight: 115,
+              containerWidth: 115,
+            }}
           />
         </View>
       </View>
