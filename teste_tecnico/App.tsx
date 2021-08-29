@@ -8,6 +8,7 @@ import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
 import { ContextProvider } from "./src/context";
 import { NavigationContainer } from "@react-navigation/native";
+import { Background } from "./src/components/Background/Index";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,7 +20,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <ContextProvider>
-        <Routes />
+        <Background>
+          <Routes />
+        </Background>
       </ContextProvider>
     </NavigationContainer>
   );

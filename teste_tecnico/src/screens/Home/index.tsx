@@ -5,11 +5,14 @@ import { styles } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { Avatar } from "../../components/Avatar";
 import { ContentArea } from "../../components/ContentArea";
-import { context } from "../../context";
+import { context, DEFAULT_VALUE } from "../../context";
 
 export function Home() {
   const user = useContext(context);
 
+  function handleLogOut() {
+    user.setUserData(DEFAULT_VALUE.userData);
+  }
   return (
     <Background>
       <View style={styles.header}>
@@ -17,7 +20,7 @@ export function Home() {
           <Text style={styles.nickName}>{`#${user.userData.login}`}</Text>
           <View style={styles.exit}>
             <Text style={styles.exitLabel}>Sair</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleLogOut}>
               <Ionicons name="exit-outline" size={24} color="red" />
             </TouchableOpacity>
           </View>

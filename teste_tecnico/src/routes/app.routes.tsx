@@ -6,6 +6,7 @@ import { Text } from "react-native-svg";
 import { Home } from "../screens/Home";
 import { Feather } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
+import { theme } from "../global/styles/theme";
 
 const { Navigator, Screen } = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,40 +24,48 @@ export function AppRoutes() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarStyle: {
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+        },
+        tabBarActiveTintColor: "black",
+        tabBarInactiveTintColor: theme.colors.inactiveColor,
       }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: () => <Feather name="home" size={24} color="black" />,
-          tabBarActiveTintColor: "black",
+          tabBarIcon: ({ color }) => (
+            <Feather name="home" size={24} color={color} />
+          ),
         }}
       />
       <Tab.Screen
         name="Repos"
         component={SettingsScreen}
         options={{
-          tabBarIcon: () => <Feather name="github" size={24} color="black" />,
-          tabBarActiveTintColor: "black",
+          tabBarIcon: ({ color }) => (
+            <Feather name="github" size={24} color={color} />
+          ),
         }}
       />
       <Tab.Screen
         name="Seguidores"
         component={SettingsScreen}
         options={{
-          tabBarIcon: () => <Feather name="users" size={24} color="black" />,
-          tabBarActiveTintColor: "black",
+          tabBarIcon: ({ color }) => (
+            <Feather name="users" size={24} color={color} />
+          ),
         }}
       />
       <Tab.Screen
         name="Seguindo"
         component={SettingsScreen}
         options={{
-          tabBarIcon: () => {
-            return <Feather name="users" size={24} color="black" />;
-          },
-          tabBarActiveTintColor: "black",
+          tabBarIcon: ({ color }) => (
+            <Feather name="users" size={24} color={color} />
+          ),
         }}
       />
     </Tab.Navigator>

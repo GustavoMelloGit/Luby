@@ -7,6 +7,7 @@ export const theme ={
         navbar: '#1F1F1F',
         lightGrey: '#5252525D',
         title: '#fff',
+        inactiveColor: '#A5A5A5',
     },
     fonts: {
         title700: 'Roboto_700Bold',

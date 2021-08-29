@@ -52,9 +52,16 @@ export const context = createContext<PropsUserContext>(DEFAULT_VALUE);
 
 export const ContextProvider = ({ children }: ContextProviderProps) => {
   const [userData, setUserData] = useState(DEFAULT_VALUE.userData);
+
+  async function logOut() {
+    setUserData(DEFAULT_VALUE.userData);
+  }
+
   return (
     <context.Provider value={{ userData, setUserData }}>
       {children}
     </context.Provider>
   );
 };
+
+export { DEFAULT_VALUE };

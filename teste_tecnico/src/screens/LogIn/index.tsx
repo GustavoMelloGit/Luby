@@ -24,16 +24,14 @@ export function LogIn() {
   }
 
   return (
-    <Background>
-      <View style={styles.container}>
-        <AntDesign name="github" color={theme.colors.secondary} size={100} />
-        <Input
-          placeholder="Usuário"
-          defaultValue={username}
-          onChangeText={(text) => setUsername(text)}
-        />
-        <Button text="ENTRAR" onPress={getUserData} />
-      </View>
-    </Background>
+    <View style={styles.container}>
+      <AntDesign name="github" color={theme.colors.secondary} size={100} />
+      <Input
+        placeholder="Usuário"
+        defaultValue={username}
+        onChangeText={(text) => setUsername(text)}
+      />
+      <Button text="ENTRAR" onPress={getUserData} />
+    </View>
   );
 }
