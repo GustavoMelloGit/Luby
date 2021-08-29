@@ -6,9 +6,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { Avatar } from "../../components/Avatar";
 import { ContentArea } from "../../components/ContentArea";
 import { context, DEFAULT_VALUE } from "../../context";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
+
+const Tab = createBottomTabNavigator();
 
 export function Home() {
   const user = useContext(context);
+  const navigation = useNavigation();
 
   async function handleLogOut() {
     user.setUserData(DEFAULT_VALUE.userData);
