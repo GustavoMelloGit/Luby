@@ -12,13 +12,18 @@ import { context } from "../../context";
 export function LogIn() {
   const user = useContext(context);
   const [username, setUsername] = useState("");
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
 
   async function getUserData() {
-    try {
-      const response = await api.get(`/${username}`);
-      user.setUserData(response.data);
-    } catch (error) {
-      console.log("errou");
+    if (username) {
+      try {
+        const response = await api.get(`/${username}`);
+        user.setUserData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setIsEmpty(true);
     }
   }
 
@@ -29,6 +34,8 @@ export function LogIn() {
         placeholder="Usuário"
         defaultValue={username}
         onChangeText={(text) => setUsername(text)}
+        isEmpty={isEmpty}
+        onFocus={() => setIsEmpty(false)}
       />
       <Button text="ENTRAR" onPress={getUserData} />
     </View>

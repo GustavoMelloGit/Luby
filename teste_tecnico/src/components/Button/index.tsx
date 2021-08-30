@@ -13,7 +13,7 @@ export function Button({ text, ...rest }: Props) {
     <BaseButton style={styles.container} {...rest}>
       <Text style={styles.text}>
         {text}
-        <AntDesign name="arrowright" size={24} color="black" />
+        <AntDesign name="arrowright" size={22} color="black" />
       </Text>
     </BaseButton>
   );

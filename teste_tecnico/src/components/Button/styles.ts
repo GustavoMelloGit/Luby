@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
     },
     text:{
-        fontSize: 25,
+        fontSize: 22,
         textAlign: 'center',
         fontWeight: '700',
     },
