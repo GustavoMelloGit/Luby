@@ -6,7 +6,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
 import { Routes } from "./src/routes";
-import { ContextProvider, ModalStateProvider } from "./src/context";
+import { ContextProvider } from "./src/context";
 import { NavigationContainer } from "@react-navigation/native";
 import { Background } from "./src/components/Background/Index";
 
@@ -19,13 +19,11 @@ export default function App() {
   if (!fontsLoaded) return <AppLoading />;
   return (
     <NavigationContainer>
-      <ModalStateProvider>
-        <ContextProvider>
-          <Background>
-            <Routes />
-          </Background>
-        </ContextProvider>
-      </ModalStateProvider>
+      <ContextProvider>
+        <Background>
+          <Routes />
+        </Background>
+      </ContextProvider>
     </NavigationContainer>
   );
 }

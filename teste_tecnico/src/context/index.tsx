@@ -59,27 +59,4 @@ export const ContextProvider = ({ children }: ContextProviderProps) => {
     </context.Provider>
   );
 };
-
-type ModalContextProps = {
-  openModal: boolean;
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const modalDefault = {
-  openModal: false,
-  setOpenModal: () => {},
-};
-
-export const modalstate = createContext<ModalContextProps>(modalDefault);
-
-export const ModalStateProvider = ({ children }: ContextProviderProps) => {
-  const [openModal, setOpenModal] = useState(modalDefault.openModal);
-
-  return (
-    <modalstate.Provider value={{ openModal, setOpenModal }}>
-      {children}
-    </modalstate.Provider>
-  );
-};
-
 export { DEFAULT_VALUE, User };

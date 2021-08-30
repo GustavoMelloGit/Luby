@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { View, FlatList } from "react-native";
 import { styles } from "./styles";
 import { api } from "../../services/api";
-import { context, DEFAULT_VALUE, modalstate, User } from "../../context";
+import { context, DEFAULT_VALUE, User } from "../../context";
 import { FollowersProps, Followers } from "../../components/Followers";
 import { Background } from "../../components/Background/Index";
 import { ListDivider } from "../../components/ListDivider";

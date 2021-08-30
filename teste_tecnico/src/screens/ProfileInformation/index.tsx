@@ -8,7 +8,6 @@ import { context, DEFAULT_VALUE, User } from "../../context";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import { useNavigation } from "@react-navigation/native";
-import { modalstate } from "../../context";
 
 type Props = {
   data: User;
@@ -17,7 +16,6 @@ type Props = {
 
 export function ProfileInformation({ data, setModalState }: Props) {
   const user = useContext(context);
-  const modal = useContext(modalstate);
   const navigation = useNavigation();
 
   async function handleSave() {
