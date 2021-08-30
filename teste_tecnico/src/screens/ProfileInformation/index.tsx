@@ -21,7 +21,7 @@ export function ProfileInformation({ data, setModalState }: Props) {
   async function handleSave() {
     user.setUserData(DEFAULT_VALUE.userData);
     user.setUserData(data);
-    navigation.goBack();
+    setModalState(false);
   }
 
   return (

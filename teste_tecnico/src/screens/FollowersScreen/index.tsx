@@ -35,7 +35,7 @@ export function FollowersScreen() {
   }
   useEffect(() => {
     loadFollowers();
-  }, []);
+  }, [user]);
 
   return (
     <Background>

@@ -35,7 +35,7 @@ export function FollowingScreen() {
   }
   useEffect(() => {
     loadFollowing();
-  }, []);
+  }, [user]);
 
   return (
     <Background>

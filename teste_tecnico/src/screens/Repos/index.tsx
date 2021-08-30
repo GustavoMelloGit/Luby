@@ -22,7 +22,7 @@ export function Repos() {
 
   useEffect(() => {
     loadRepos();
-  }, []);
+  }, [user]);
 
   return (
     <Background>
