@@ -12,9 +12,10 @@ import { modalstate } from "../../context";
 
 type Props = {
   data: User;
+  setModalState: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export function ProfileInformation({ data }: Props) {
+export function ProfileInformation({ data, setModalState }: Props) {
   const user = useContext(context);
   const modal = useContext(modalstate);
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ export function ProfileInformation({ data }: Props) {
         <View style={styles.headerContent}>
           <TouchableOpacity
             onPress={() => {
-              modal.setOpenModal(false);
+              setModalState(false);
             }}
           >
             <AntDesign name="arrowleft" size={24} color="#fff" />

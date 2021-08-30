@@ -11,15 +11,15 @@ import { ProfileInformation } from "../ProfileInformation";
 
 export function FollowersScreen() {
   const user = useContext(context);
-  const modal = useContext(modalstate);
   const [followers, setFollowers] = useState<FollowersProps[]>([]);
   const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
+  const [modalState, setModalState] = useState<boolean>(false);
 
   async function handleOpenModal(item: FollowersProps) {
     try {
       const response = await api.get(`/${item.login}`);
       setClickedUser(response.data);
-      modal.setOpenModal(true);
+      setModalState(true);
     } catch (error) {
       console.log("error");
     }
@@ -34,7 +34,6 @@ export function FollowersScreen() {
     }
   }
   useEffect(() => {
-    modal.setOpenModal(false);
     loadFollowers();
   }, []);
 
@@ -54,8 +53,11 @@ export function FollowersScreen() {
           }}
           ItemSeparatorComponent={() => <ListDivider />}
         />
-        <ModalView visible={modal.openModal}>
-          <ProfileInformation data={clickedUser} />
+        <ModalView visible={modalState}>
+          <ProfileInformation
+            data={clickedUser}
+            setModalState={setModalState}
+          />
         </ModalView>
       </View>
     </Background>
