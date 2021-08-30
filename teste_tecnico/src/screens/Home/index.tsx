@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { Background } from "../../components/Background/Index";
 import { styles } from "./styles";
 import { Ionicons } from "@expo/vector-icons";

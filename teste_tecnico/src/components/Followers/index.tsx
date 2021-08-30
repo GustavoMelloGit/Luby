@@ -1,5 +1,5 @@
+import React from "react";
 import { AntDesign } from "@expo/vector-icons";
-import React, { useContext } from "react";
 import { TouchableOpacityProps } from "react-native";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Avatar } from "../Avatar";

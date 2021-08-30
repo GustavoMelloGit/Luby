@@ -2,7 +2,6 @@ import React from "react";
 import { useContext } from "react";
 import { LogIn } from "../screens/LogIn";
 import { context } from "../context";
-import { Home } from "../screens/Home";
 import { AppRoutes } from "./app.routes";
 
 export function Routes() {

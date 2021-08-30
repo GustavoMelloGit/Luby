@@ -1,6 +1,5 @@
 import React from "react";
 import { Image, ImageProps, View } from "react-native";
-import { styles } from "./styles";
 import { context } from "../../context";
 import { useContext } from "react";
 

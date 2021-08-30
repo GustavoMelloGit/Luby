@@ -1,11 +1,11 @@
-import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useNavigation } from "@react-navigation/core";
 import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
+import { theme } from "../global/styles/theme";
+import { AntDesign, Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/core";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Background } from "../components/Background/Index";
 import { context } from "../context";
-import { theme } from "../global/styles/theme";
 import { FollowersScreen } from "../screens/FollowersScreen";
 import { FollowingScreen } from "../screens/FollowingScreen";
 import { Home } from "../screens/Home";
