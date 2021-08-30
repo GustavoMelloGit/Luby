@@ -6,7 +6,6 @@ import { styles } from "./styles";
 
 type Props = ModalProps & {
   children: ReactNode;
-  handleClose: () => void;
 };
 
 export function ModalView({ children, ...rest }: Props) {

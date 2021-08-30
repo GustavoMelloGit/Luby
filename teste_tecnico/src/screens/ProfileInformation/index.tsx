@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Text, TouchableOpacity, View, Image, ModalProps } from "react-native";
 import { Background } from "../../components/Background/Index";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
@@ -7,44 +7,29 @@ import { ContentArea } from "../../components/ContentArea";
 import { context, DEFAULT_VALUE, User } from "../../context";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
-import { useState } from "react";
-import { api } from "../../services/api";
 import { useNavigation } from "@react-navigation/native";
 import { modalstate } from "../../context";
 
 type Props = {
-  login: string;
+  data: User;
 };
 
-export function ProfileInformation({ login }: Props) {
+export function ProfileInformation({ data }: Props) {
   const user = useContext(context);
   const modal = useContext(modalstate);
-  const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
   const navigation = useNavigation();
 
-  async function getUserData() {
-    try {
-      const response = await api.get(`/${login}`);
-      const clickedUser = response;
-      setClickedUser(response.data);
-    } catch (error) {
-      console.log("error");
-    }
-  }
-
-  useEffect(() => {
-    getUserData();
-  });
-
   async function handleSave() {
-    user.setUserData(clickedUser);
+    user.setUserData(DEFAULT_VALUE.userData);
+    user.setUserData(data);
     navigation.goBack();
   }
+
   return (
     <Background>
       <View style={styles.header}>
         <View style={styles.nickNameWrapper}>
-          <Text style={styles.nickName}>{`#${clickedUser?.login}`}</Text>
+          <Text style={styles.nickName}>{`#${data.login}`}</Text>
         </View>
         <View style={styles.headerContent}>
           <TouchableOpacity
@@ -68,7 +53,7 @@ export function ProfileInformation({ login }: Props) {
         <View style={styles.profile}>
           <Avatar
             source={{
-              uri: `${clickedUser.avatar_url}`,
+              uri: `${data.avatar_url}`,
             }}
             style={{ width: 110, height: 110, borderRadius: 110 / 2 }}
             container={{
@@ -81,33 +66,33 @@ export function ProfileInformation({ login }: Props) {
 
       <View style={styles.content}>
         <ContentArea
-          childrenTitle={<Text>{clickedUser?.name}</Text>}
+          childrenTitle={<Text>{data.name}</Text>}
           childrenSubtitle={
             <Text>
-              {clickedUser?.email} {"\n"}
-              {clickedUser?.location}
+              {data.email} {"\n"}
+              {data.location}
             </Text>
           }
         />
 
         <View style={styles.userInformation}>
           <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{clickedUser?.followers}</Text>
+            <Text style={styles.title}>{data.followers}</Text>
             <Text style={styles.subtitle}>Seguidores</Text>
           </View>
           <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{clickedUser?.following}</Text>
+            <Text style={styles.title}>{data.following}</Text>
             <Text style={styles.subtitle}>Seguindo</Text>
           </View>
           <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{clickedUser?.public_repos}</Text>
+            <Text style={styles.title}>{data.public_repos}</Text>
             <Text style={styles.subtitle}>Repos</Text>
           </View>
         </View>
         <View style={styles.userBio}>
           <ContentArea
             childrenTitle={<Text>BIO</Text>}
-            childrenSubtitle={<Text>{clickedUser?.bio}</Text>}
+            childrenSubtitle={<Text>{data.bio}</Text>}
           />
         </View>
       </View>

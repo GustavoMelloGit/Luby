@@ -1,15 +1,29 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, FlatList, Button } from "react-native";
+import { View, FlatList } from "react-native";
 import { styles } from "./styles";
 import { api } from "../../services/api";
-import { context, ModalStateProvider } from "../../context";
+import { context, DEFAULT_VALUE, modalstate, User } from "../../context";
 import { FollowersProps, Followers } from "../../components/Followers";
 import { Background } from "../../components/Background/Index";
 import { ListDivider } from "../../components/ListDivider";
+import { ModalView } from "../../components/ModalView";
+import { ProfileInformation } from "../ProfileInformation";
 
 export function FollowersScreen() {
   const user = useContext(context);
+  const modal = useContext(modalstate);
   const [followers, setFollowers] = useState<FollowersProps[]>([]);
+  const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
+
+  async function handleOpenModal(item: FollowersProps) {
+    try {
+      const response = await api.get(`/${item.login}`);
+      setClickedUser(response.data);
+      modal.setOpenModal(true);
+    } catch (error) {
+      console.log("error");
+    }
+  }
 
   async function loadFollowers() {
     try {
@@ -20,6 +34,7 @@ export function FollowersScreen() {
     }
   }
   useEffect(() => {
+    modal.setOpenModal(false);
     loadFollowers();
   }, []);
 
@@ -29,7 +44,9 @@ export function FollowersScreen() {
         <FlatList
           data={followers}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => <Followers data={item} />}
+          renderItem={({ item }) => (
+            <Followers data={item} onPress={() => handleOpenModal(item)} />
+          )}
           contentContainerStyle={{
             paddingRight: 23,
             marginTop: 41,
@@ -37,6 +54,9 @@ export function FollowersScreen() {
           }}
           ItemSeparatorComponent={() => <ListDivider />}
         />
+        <ModalView visible={modal.openModal}>
+          <ProfileInformation data={clickedUser} />
+        </ModalView>
       </View>
     </Background>
   );
