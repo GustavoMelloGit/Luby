@@ -1,10 +1,18 @@
 import { AntDesign } from "@expo/vector-icons";
-import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useContext } from "react";
+import { createContext } from "react";
+import { useState } from "react";
+import { ButtonProps } from "react-native";
 import { View, Text, TouchableOpacity } from "react-native";
+import { User } from "../../context";
+import { Home } from "../../screens/Home";
+import { ProfileInformation } from "../../screens/ProfileInformation";
 import { Avatar } from "../Avatar";
 import { Marker } from "../Marker";
+import { ModalView } from "../ModalView";
 import { styles } from "./styles";
+import { modalstate } from "../../context";
 
 export type FollowersProps = {
   login: string;
@@ -17,9 +25,14 @@ type Props = {
 };
 
 export function Followers({ data }: Props) {
-  function handleClick() {}
+  const modal = useContext(modalstate);
+
+  function handleCloseModal() {
+    modal.setOpenModal(false);
+  }
+
   return (
-    <TouchableOpacity onPress={handleClick}>
+    <TouchableOpacity onPress={() => modal.setOpenModal(true)}>
       <View style={styles.container}>
         <View style={styles.userInfo}>
           <Marker />
@@ -39,6 +52,9 @@ export function Followers({ data }: Props) {
         </View>
         <AntDesign name="arrowright" size={24} color="#fff" />
       </View>
+      <ModalView visible={modal.openModal} handleClose={handleCloseModal}>
+        <ProfileInformation {...data} />
+      </ModalView>
     </TouchableOpacity>
   );
 }

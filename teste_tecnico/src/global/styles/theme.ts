@@ -10,6 +10,7 @@ export const theme ={
         inactiveColor: '#A5A5A5',
         lock: '#CC042A',
         unlock: '#63BF1F',
+        save: '#5CBC29',
     },
     fonts: {
         title700: 'Roboto_700Bold',

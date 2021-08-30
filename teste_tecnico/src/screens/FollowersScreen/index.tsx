@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Button } from "react-native";
 import { styles } from "./styles";
 import { api } from "../../services/api";
-import { context } from "../../context";
+import { context, ModalStateProvider } from "../../context";
 import { FollowersProps, Followers } from "../../components/Followers";
 import { Background } from "../../components/Background/Index";
 import { ListDivider } from "../../components/ListDivider";
