@@ -1,14 +1,14 @@
 import "react-native-gesture-handler";
 import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { context } from "../context";
+import { userContext } from "../context";
 
 import { HomeRoutes } from "./home.routes";
 
 const Stack = createStackNavigator();
 
 export function AppRoutes() {
-  const user = useContext(context);
+  const user = useContext(userContext);
   return (
     <Stack.Navigator>
       <Stack.Screen

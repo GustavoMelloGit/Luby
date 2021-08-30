@@ -14,7 +14,9 @@ export function ContentArea({ childrenTitle, childrenSubtitle }: Props) {
       <Marker />
       <View>
         <Text style={styles.title}>{childrenTitle}</Text>
-        <Text style={styles.subtitle}>{childrenSubtitle}</Text>
+        <View style={styles.subtitleContainer}>
+          <Text style={styles.subtitle}>{childrenSubtitle}</Text>
+        </View>
       </View>
     </View>
   );

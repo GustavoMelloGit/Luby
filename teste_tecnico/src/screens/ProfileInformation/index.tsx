@@ -4,7 +4,7 @@ import { Background } from "../../components/Background/Index";
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { Avatar } from "../../components/Avatar";
 import { ContentArea } from "../../components/ContentArea";
-import { context, DEFAULT_VALUE, User } from "../../context";
+import { userContext, DEFAULT_VALUE, User } from "../../context";
 import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 import { useNavigation } from "@react-navigation/native";
@@ -15,7 +15,7 @@ type Props = {
 };
 
 export function ProfileInformation({ data, setModalState }: Props) {
-  const user = useContext(context);
+  const user = useContext(userContext);
   const navigation = useNavigation();
 
   async function handleSave() {

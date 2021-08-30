@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { View, FlatList } from "react-native";
 import { styles } from "./styles";
 import { api } from "../../services/api";
-import { context, DEFAULT_VALUE, User } from "../../context";
+import { userContext, DEFAULT_VALUE, User } from "../../context";
 import { FollowersProps, Followers } from "../../components/Followers";
 import { Background } from "../../components/Background/Index";
 import { ListDivider } from "../../components/ListDivider";
@@ -10,7 +10,7 @@ import { ModalView } from "../../components/ModalView";
 import { ProfileInformation } from "../ProfileInformation";
 
 export function FollowersScreen() {
-  const user = useContext(context);
+  const user = useContext(userContext);
   const [followers, setFollowers] = useState<FollowersProps[]>([]);
   const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
   const [modalState, setModalState] = useState<boolean>(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, ImageProps, View } from "react-native";
-import { context } from "../../context";
+import { userContext } from "../../context";
 import { useContext } from "react";
 
 type ContainerProps = {
@@ -12,7 +12,7 @@ type Props = ImageProps & {
 };
 
 export function Avatar({ container, ...rest }: Props) {
-  const user = useContext(context);
+  const user = useContext(userContext);
   return (
     <View
       style={{

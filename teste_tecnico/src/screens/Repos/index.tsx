@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { styles } from "./styles";
-import { context } from "../../context";
+import { userContext } from "../../context";
 import { FlatList, View } from "react-native";
 import { Background } from "../../components/Background/Index";
 import { Repositories, ReposProps } from "../../components/Repositories";
@@ -8,7 +8,7 @@ import { api } from "../../services/api";
 import { ListDivider } from "../../components/ListDivider";
 
 export function Repos() {
-  const user = useContext(context);
+  const user = useContext(userContext);
   const [repos, setRepos] = useState<ReposProps[]>([]);
 
   async function loadRepos() {

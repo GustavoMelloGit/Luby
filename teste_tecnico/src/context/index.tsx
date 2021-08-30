@@ -48,15 +48,15 @@ const DEFAULT_VALUE = {
   setUserData: () => {},
 };
 
-export const context = createContext<PropsUserContext>(DEFAULT_VALUE);
+export const userContext = createContext<PropsUserContext>(DEFAULT_VALUE);
 
 export const ContextProvider = ({ children }: ContextProviderProps) => {
   const [userData, setUserData] = useState(DEFAULT_VALUE.userData);
 
   return (
-    <context.Provider value={{ userData, setUserData }}>
+    <userContext.Provider value={{ userData, setUserData }}>
       {children}
-    </context.Provider>
+    </userContext.Provider>
   );
 };
 export { DEFAULT_VALUE, User };

@@ -7,10 +7,10 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { useState } from "react";
 import { api } from "../../services/api";
-import { context } from "../../context";
+import { userContext } from "../../context";
 
 export function LogIn() {
-  const user = useContext(context);
+  const user = useContext(userContext);
   const [username, setUsername] = useState("");
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
 

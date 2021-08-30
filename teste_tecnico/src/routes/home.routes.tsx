@@ -5,7 +5,7 @@ import { AntDesign, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Background } from "../components/Background/Index";
-import { context } from "../context";
+import { userContext } from "../context";
 import { FollowersScreen } from "../screens/FollowersScreen";
 import { FollowingScreen } from "../screens/FollowingScreen";
 import { Home } from "../screens/Home";
@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 
 export function HomeRoutes() {
   const navigation = useNavigation();
-  const user = useContext(context);
+  const user = useContext(userContext);
   return (
     <Background>
       <Tab.Navigator
