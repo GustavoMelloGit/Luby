@@ -31,8 +31,9 @@ export const styles = StyleSheet.create({
     marginRight: 12,
   },
   profile: {
+    position: "absolute",
     alignSelf: "center",
-    bottom: -10,
+    top: -55,
   },
   content: {
     marginTop: 80,

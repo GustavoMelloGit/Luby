@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { theme } from "../global/styles/theme";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";

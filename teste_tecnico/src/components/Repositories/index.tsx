@@ -20,9 +20,9 @@ export function Repositories({ data }: Props) {
   return (
     <View>
       <ContentArea
-        childrenTitle={<Text style={{ fontSize: 20 }}>{data.name}</Text>}
+        childrenTitle={<Text style={{ fontSize: 18 }}>{data.name}</Text>}
         childrenSubtitle={
-          <Text style={{ fontSize: 15 }}>
+          <Text style={{ fontSize: 15, alignSelf: "flex-end" }}>
             {data.description ? `${data.description}` : ""}
           </Text>
         }

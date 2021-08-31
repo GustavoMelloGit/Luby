@@ -16,7 +16,6 @@ type Props = {
 
 export function ProfileInformation({ data, setModalState }: Props) {
   const user = useContext(userContext);
-  const navigation = useNavigation();
 
   async function handleSave() {
     user.setUserData(DEFAULT_VALUE.userData);
@@ -25,7 +24,7 @@ export function ProfileInformation({ data, setModalState }: Props) {
   }
 
   return (
-    <Background>
+    <>
       <View style={styles.header}>
         <View style={styles.nickNameWrapper}>
           <Text style={styles.nickName}>{`#${data.login}`}</Text>
@@ -49,6 +48,8 @@ export function ProfileInformation({ data, setModalState }: Props) {
             </TouchableOpacity>
           </View>
         </View>
+      </View>
+      <Background>
         <View style={styles.profile}>
           <Avatar
             source={{
@@ -61,40 +62,40 @@ export function ProfileInformation({ data, setModalState }: Props) {
             }}
           />
         </View>
-      </View>
 
-      <View style={styles.content}>
-        <ContentArea
-          childrenTitle={<Text>{data.name}</Text>}
-          childrenSubtitle={
-            <Text>
-              {data.email} {"\n"}
-              {data.location}
-            </Text>
-          }
-        />
-
-        <View style={styles.userInformation}>
-          <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{data.followers}</Text>
-            <Text style={styles.subtitle}>Seguidores</Text>
-          </View>
-          <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{data.following}</Text>
-            <Text style={styles.subtitle}>Seguindo</Text>
-          </View>
-          <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{data.public_repos}</Text>
-            <Text style={styles.subtitle}>Repos</Text>
-          </View>
-        </View>
-        <View style={styles.userBio}>
+        <View style={styles.content}>
           <ContentArea
-            childrenTitle={<Text>BIO</Text>}
-            childrenSubtitle={<Text>{data.bio}</Text>}
+            childrenTitle={<Text>{data.name}</Text>}
+            childrenSubtitle={
+              <Text>
+                {data.email} {"\n"}
+                {data.location}
+              </Text>
+            }
           />
+
+          <View style={styles.userInformation}>
+            <View style={styles.userInformationInner}>
+              <Text style={styles.title}>{data.followers}</Text>
+              <Text style={styles.subtitle}>Seguidores</Text>
+            </View>
+            <View style={styles.userInformationInner}>
+              <Text style={styles.title}>{data.following}</Text>
+              <Text style={styles.subtitle}>Seguindo</Text>
+            </View>
+            <View style={styles.userInformationInner}>
+              <Text style={styles.title}>{data.public_repos}</Text>
+              <Text style={styles.subtitle}>Repos</Text>
+            </View>
+          </View>
+          <View style={styles.userBio}>
+            <ContentArea
+              childrenTitle={<Text>BIO</Text>}
+              childrenSubtitle={<Text>{data.bio}</Text>}
+            />
+          </View>
         </View>
-      </View>
-    </Background>
+      </Background>
+    </>
   );
 }

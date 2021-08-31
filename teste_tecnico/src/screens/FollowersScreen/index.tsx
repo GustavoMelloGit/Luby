@@ -8,12 +8,14 @@ import { Background } from "../../components/Background/Index";
 import { ListDivider } from "../../components/ListDivider";
 import { ModalView } from "../../components/ModalView";
 import { ProfileInformation } from "../ProfileInformation";
+import { Loading } from "../../components/Loading";
 
 export function FollowersScreen() {
   const user = useContext(userContext);
   const [followers, setFollowers] = useState<FollowersProps[]>([]);
   const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
   const [modalState, setModalState] = useState<boolean>(false);
+  const [load, setLoad] = useState<boolean>(true);
 
   async function handleOpenModal(item: FollowersProps) {
     try {
@@ -29,6 +31,7 @@ export function FollowersScreen() {
     try {
       const response = await api.get(`/${user.userData.login}/followers`);
       setFollowers(response.data);
+      setLoad(false);
     } catch (error) {
       console.log("error");
     }
@@ -39,27 +42,31 @@ export function FollowersScreen() {
 
   return (
     <Background>
-      <View style={styles.container}>
-        <FlatList
-          data={followers}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <Followers data={item} onPress={() => handleOpenModal(item)} />
-          )}
-          contentContainerStyle={{
-            paddingRight: 23,
-            marginTop: 41,
-            paddingBottom: 60,
-          }}
-          ItemSeparatorComponent={() => <ListDivider />}
-        />
-        <ModalView visible={modalState}>
-          <ProfileInformation
-            data={clickedUser}
-            setModalState={setModalState}
+      {load ? (
+        <Loading />
+      ) : (
+        <View style={styles.container}>
+          <FlatList
+            data={followers}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <Followers data={item} onPress={() => handleOpenModal(item)} />
+            )}
+            contentContainerStyle={{
+              paddingRight: 23,
+              marginTop: 41,
+              paddingBottom: 60,
+            }}
+            ItemSeparatorComponent={() => <ListDivider />}
           />
-        </ModalView>
-      </View>
+          <ModalView visible={modalState}>
+            <ProfileInformation
+              data={clickedUser}
+              setModalState={setModalState}
+            />
+          </ModalView>
+        </View>
+      )}
     </Background>
   );
 }

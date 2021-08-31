@@ -13,13 +13,12 @@ const Tab = createBottomTabNavigator();
 
 export function Home() {
   const user = useContext(userContext);
-  const navigation = useNavigation();
 
   async function handleLogOut() {
     user.setUserData(DEFAULT_VALUE.userData);
   }
   return (
-    <Background>
+    <>
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <Text style={styles.nickName}>{`#${user.userData.login}`}</Text>
@@ -30,6 +29,8 @@ export function Home() {
             </TouchableOpacity>
           </View>
         </View>
+      </View>
+      <Background>
         <View style={styles.profile}>
           <Avatar
             source={{
@@ -42,40 +43,43 @@ export function Home() {
             }}
           />
         </View>
-      </View>
-
-      <View style={styles.content}>
-        <ContentArea
-          childrenTitle={<Text>{user.userData?.name}</Text>}
-          childrenSubtitle={
-            <Text>
-              {user.userData?.email} {"\n"}
-              {user.userData?.location}
-            </Text>
-          }
-        />
-
-        <View style={styles.userInformation}>
-          <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{user.userData.followers}</Text>
-            <Text style={styles.subtitle}>Seguidores</Text>
-          </View>
-          <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{user.userData.following}</Text>
-            <Text style={styles.subtitle}>Seguindo</Text>
-          </View>
-          <View style={styles.userInformationInner}>
-            <Text style={styles.title}>{user.userData.public_repos}</Text>
-            <Text style={styles.subtitle}>Repos</Text>
-          </View>
-        </View>
-        <View style={styles.userBio}>
+        <View style={styles.content}>
           <ContentArea
-            childrenTitle={<Text>BIO</Text>}
-            childrenSubtitle={<Text>{user.userData.bio}</Text>}
+            childrenTitle={
+              <Text style={{ textTransform: "uppercase" }}>
+                {user.userData?.name}
+              </Text>
+            }
+            childrenSubtitle={
+              <Text>
+                {user.userData?.email} {"\n"}
+                {user.userData?.location}
+              </Text>
+            }
           />
+
+          <View style={styles.userInformation}>
+            <View style={styles.userInformationInner}>
+              <Text style={styles.title}>{user.userData.followers}</Text>
+              <Text style={styles.subtitle}>Seguidores</Text>
+            </View>
+            <View style={styles.userInformationInner}>
+              <Text style={styles.title}>{user.userData.following}</Text>
+              <Text style={styles.subtitle}>Seguindo</Text>
+            </View>
+            <View style={styles.userInformationInner}>
+              <Text style={styles.title}>{user.userData.public_repos}</Text>
+              <Text style={styles.subtitle}>Repos</Text>
+            </View>
+          </View>
+          <View style={styles.userBio}>
+            <ContentArea
+              childrenTitle={<Text>BIO</Text>}
+              childrenSubtitle={<Text>{user.userData.bio}</Text>}
+            />
+          </View>
         </View>
-      </View>
-    </Background>
+      </Background>
+    </>
   );
 }

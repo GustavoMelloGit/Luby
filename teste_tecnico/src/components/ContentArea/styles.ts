@@ -9,7 +9,6 @@ export const styles = StyleSheet.create({
   },
   title: {
     color: theme.colors.title,
-    textTransform: "uppercase",
     fontSize: 26,
     fontFamily: theme.fonts.title700,
   },
