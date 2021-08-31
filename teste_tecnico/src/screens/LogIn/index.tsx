@@ -8,19 +8,22 @@ import { Button } from "../../components/Button";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { userContext } from "../../context";
+import AwesomeAlert from "react-native-awesome-alerts";
 
 export function LogIn() {
   const user = useContext(userContext);
   const [username, setUsername] = useState("");
   const [isEmpty, setIsEmpty] = useState<boolean>(false);
+  const [alert, setAlert] = useState<boolean>(false);
 
   async function getUserData() {
     if (username) {
       try {
         const response = await api.get(`/${username}`);
+        console.log(response.data);
         user.setUserData(response.data);
       } catch (error) {
-        console.log(error);
+        setAlert(true);
       }
     } else {
       setIsEmpty(true);
@@ -38,6 +41,17 @@ export function LogIn() {
         onFocus={() => setIsEmpty(false)}
       />
       <Button text="ENTRAR" onPress={getUserData} />
+      <AwesomeAlert
+        show={alert}
+        message="Usuário inválido"
+        closeOnTouchOutside={false}
+        showConfirmButton
+        confirmText="Opa, já vou consertar!"
+        confirmButtonColor={theme.colors.secondary}
+        onConfirmPressed={() => {
+          setAlert(false);
+        }}
+      />
     </View>
   );
 }
