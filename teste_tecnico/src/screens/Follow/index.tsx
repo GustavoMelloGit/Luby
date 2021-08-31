@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { View, FlatList } from "react-native";
-import { styles } from "./styles";
 import { api } from "../../services/api";
 import { userContext, DEFAULT_VALUE, User } from "../../context";
 import { FollowersProps, Followers } from "../../components/Followers";
@@ -10,9 +9,13 @@ import { ModalView } from "../../components/ModalView";
 import { ProfileInformation } from "../ProfileInformation";
 import { Loading } from "../../components/Loading";
 
-export function FollowersScreen() {
+type Props = {
+  type: string;
+};
+
+export function Follow({ type }: Props) {
   const user = useContext(userContext);
-  const [followers, setFollowers] = useState<FollowersProps[]>([]);
+  const [following, setFollowing] = useState<FollowersProps[]>([]);
   const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
   const [modalState, setModalState] = useState<boolean>(false);
   const [load, setLoad] = useState<boolean>(true);
@@ -27,17 +30,17 @@ export function FollowersScreen() {
     }
   }
 
-  async function loadFollowers() {
+  async function loadFollowing() {
     try {
-      const response = await api.get(`/${user.userData.login}/followers`);
-      setFollowers(response.data);
+      const response = await api.get(`/${user.userData.login}/${type}`);
+      setFollowing(response.data);
       setLoad(false);
     } catch (error) {
       console.log("error");
     }
   }
   useEffect(() => {
-    loadFollowers();
+    loadFollowing();
   }, [user]);
 
   return (
@@ -45,9 +48,9 @@ export function FollowersScreen() {
       {load ? (
         <Loading />
       ) : (
-        <View style={styles.container}>
+        <View>
           <FlatList
-            data={followers}
+            data={following}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <Followers data={item} onPress={() => handleOpenModal(item)} />

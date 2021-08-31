@@ -6,10 +6,9 @@ import { useNavigation } from "@react-navigation/core";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Background } from "../components/Background/Index";
 import { userContext } from "../context";
-import { FollowersScreen } from "../screens/FollowersScreen";
-import { FollowingScreen } from "../screens/FollowingScreen";
 import { Home } from "../screens/Home";
 import { Repos } from "../screens/Repos";
+import { Follow } from "../screens/Follow";
 
 const Tab = createBottomTabNavigator();
 
@@ -67,7 +66,7 @@ export function HomeRoutes() {
         />
         <Tab.Screen
           name="Seguidores"
-          component={FollowersScreen}
+          children={() => <Follow type="followers" />}
           options={{
             tabBarIcon: ({ color }) => (
               <Feather name="users" size={24} color={color} />
@@ -94,7 +93,7 @@ export function HomeRoutes() {
         />
         <Tab.Screen
           name="Seguindo"
-          component={FollowingScreen}
+          children={() => <Follow type="following" />}
           options={{
             tabBarIcon: ({ color }) => (
               <Feather name="users" size={24} color={color} />

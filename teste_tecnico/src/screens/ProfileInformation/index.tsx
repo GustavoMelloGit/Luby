@@ -18,7 +18,6 @@ export function ProfileInformation({ data, setModalState }: Props) {
   const user = useContext(userContext);
 
   async function handleSave() {
-    user.setUserData(DEFAULT_VALUE.userData);
     user.setUserData(data);
     setModalState(false);
   }

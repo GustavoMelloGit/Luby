@@ -6,5 +6,5 @@ import { AppRoutes } from "./app.routes";
 
 export function Routes() {
   const user = useContext(userContext);
-  return !!user.userData.name ? <AppRoutes /> : <LogIn />;
+  return !!user.userData.login ? <AppRoutes /> : <LogIn />;
 }

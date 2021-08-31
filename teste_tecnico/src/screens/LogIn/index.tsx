@@ -20,7 +20,6 @@ export function LogIn() {
     if (username) {
       try {
         const response = await api.get(`/${username}`);
-        console.log(response.data);
         user.setUserData(response.data);
       } catch (error) {
         setAlert(true);
