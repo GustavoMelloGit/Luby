@@ -66,7 +66,7 @@ export function HomeRoutes() {
         />
         <Tab.Screen
           name="Seguidores"
-          children={() => <Follow type="followers" />}
+          children={() => <Follow screenType="followers" />}
           options={{
             tabBarIcon: ({ color }) => (
               <Feather name="users" size={24} color={color} />
@@ -93,7 +93,7 @@ export function HomeRoutes() {
         />
         <Tab.Screen
           name="Seguindo"
-          children={() => <Follow type="following" />}
+          children={() => <Follow screenType="following" />}
           options={{
             tabBarIcon: ({ color }) => (
               <Feather name="users" size={24} color={color} />

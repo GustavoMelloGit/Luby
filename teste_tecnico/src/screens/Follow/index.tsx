@@ -10,10 +10,10 @@ import { ProfileInformation } from "../ProfileInformation";
 import { Loading } from "../../components/Loading";
 
 type Props = {
-  type: string;
+  screenType: string;
 };
 
-export function Follow({ type }: Props) {
+export function Follow({ screenType }: Props) {
   const user = useContext(userContext);
   const [following, setFollowing] = useState<FollowersProps[]>([]);
   const [clickedUser, setClickedUser] = useState<User>(DEFAULT_VALUE.userData);
@@ -32,7 +32,7 @@ export function Follow({ type }: Props) {
 
   async function loadFollowing() {
     try {
-      const response = await api.get(`/${user.userData.login}/${type}`);
+      const response = await api.get(`/${user.userData.login}/${screenType}`);
       setFollowing(response.data);
       setLoad(false);
     } catch (error) {
